@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.1 (Python 3.12.6 on win32)" generated="2024-10-03T22:13:52.483057" rpa="false" schemaversion="5">
+<suite id="s1" name="Testdemo7" source="C:\Users\kiran\PycharmProjects\pythonProject5\tests\testdemo7.robot">
+<test id="s1-t1" name="play around with the dictionary" line="11">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-10-03T22:13:52.841900" level="INFO">&amp;{data} = { name=kiran | id =123 }</msg>
+<var>&amp;{data}</var>
+<arg>name=kiran</arg>
+<arg>id =123</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-10-03T22:13:52.841900" elapsed="0.000000"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${data}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-10-03T22:13:52.841900" elapsed="0.000000"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${data}</arg>
+<arg>name</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" start="2024-10-03T22:13:52.841900" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2024-10-03T22:13:52.841900" elapsed="0.000000"/>
+</test>
+<test id="s1-t2" name="Add book into library database" line="17">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-10-03T22:13:52.841900" level="INFO">&amp;{res_body} = { name=learn api with robot | isbn=677 | aisle=9088 | author=kiran }</msg>
+<var>&amp;{res_body}</var>
+<arg>name=learn api with robot</arg>
+<arg>isbn=677</arg>
+<arg>aisle=9088</arg>
+<arg>author=kiran</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-10-03T22:13:52.841900" elapsed="0.000000"/>
+</kw>
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2024-10-03T22:13:54.072059" level="INFO">POST Request : url=https://rahulshettyacademy.com/Library/Addbook.php 
+ path_url=/Library/Addbook.php 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '83', 'Content-Type': 'application/json'} 
+ body=b'{"name": "learn api with robot", "isbn": "677", "aisle": "9088", "author": "kiran"}' 
+ </msg>
+<msg time="2024-10-03T22:13:54.072059" level="INFO">POST Response : url=https://rahulshettyacademy.com/Library/Addbook.php 
+ status=200, reason=OK 
+ headers={'Date': 'Thu, 03 Oct 2024 16:43:54 GMT', 'Server': 'Apache/2.4.52 (Ubuntu)', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'POST', 'Access-Control-Max-Age': '3600', 'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With', 'Content-Length': '44', 'Keep-Alive': 'timeout=5, max=100', 'Connection': 'Keep-Alive', 'Content-Type': 'application/json;charset=UTF-8'} 
+ body={"Msg":"Book Already Exists","ID":"6779088"} 
+ </msg>
+<msg time="2024-10-03T22:13:54.072059" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${base_url}/Library/Addbook.php</arg>
+<arg>json=${res_body}</arg>
+<arg>expected_status=200</arg>
+<doc>Sends a POST request.</doc>
+<status status="PASS" start="2024-10-03T22:13:52.841900" elapsed="1.230159"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${response.json()}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-10-03T22:13:54.072059" elapsed="0.000000"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${response.json()}</arg>
+<arg>ID</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" start="2024-10-03T22:13:54.072059" elapsed="0.000000"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2024-10-03T22:13:54.072059" level="INFO">${book_msg} = 6779088</msg>
+<var>${book_msg}</var>
+<arg>${response.json()}</arg>
+<arg>ID</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2024-10-03T22:13:54.072059" elapsed="0.000000"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2024-10-03T22:13:54.072059" level="INFO">${book_msg} = 6779088</msg>
+<arg>${book_msg}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2024-10-03T22:13:54.072059" elapsed="0.000000"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${book_msg}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-10-03T22:13:54.072059" elapsed="0.000000"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${response.json()}[Msg]</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-10-03T22:13:54.072059" elapsed="0.009953"/>
+</kw>
+<status status="PASS" start="2024-10-03T22:13:52.841900" elapsed="1.240168"/>
+</test>
+<test id="s1-t3" name="Get the book details by id" line="27">
+<kw name="GET" owner="RequestsLibrary">
+<msg time="2024-10-03T22:13:54.082068" level="FAIL">TypeError: Session.request() got an unexpected keyword argument 'expected_status '</msg>
+<var>${get_reponse}</var>
+<arg>${base_url}/Library/Addbook.php</arg>
+<arg>params=ID=${book_msg}</arg>
+<arg>expected_status =200</arg>
+<doc>Sends a GET request.</doc>
+<status status="FAIL" start="2024-10-03T22:13:54.082068" elapsed="0.010368">TypeError: Session.request() got an unexpected keyword argument 'expected_status '</status>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${get_reponse.json()}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2024-10-03T22:13:54.092436" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2024-10-03T22:13:54.082068" elapsed="0.010368">TypeError: Session.request() got an unexpected keyword argument 'expected_status '</status>
+</test>
+<doc>to test the dictionary elements</doc>
+<status status="FAIL" start="2024-10-03T22:13:52.483057" elapsed="1.619313"/>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="2" fail="1" skip="0" id="s1" name="Testdemo7">Testdemo7</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

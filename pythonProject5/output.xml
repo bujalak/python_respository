@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.1 (Python 3.12.6 on win32)" generated="2024-09-29T17:39:54.663862" rpa="false" schemaversion="5">
+<suite id="s1" name="pythonProject5" source="C:\Users\kiran\PycharmProjects\pythonProject5">
+<suite id="s1-s1" name="Tests" source="C:\Users\kiran\PycharmProjects\pythonProject5\tests">
+<suite id="s1-s1-s1" name="TestDemo4" source="C:\Users\kiran\PycharmProjects\pythonProject5\tests\TestDemo4.robot">
+<test id="s1-s1-s1-t1" name="Login With user" line="13">
+<kw name="Validate the unsuccessful login">
+<msg time="2024-09-29T17:39:55.202401" level="FAIL">Variable '${username}' not found.</msg>
+<arg>user ${username} and password</arg>
+<arg>r${password}</arg>
+<status status="FAIL" start="2024-09-29T17:39:55.200263" elapsed="0.002138">Variable '${username}' not found.</status>
+</kw>
+<status status="FAIL" start="2024-09-29T17:39:55.195247" elapsed="0.007154">Variable '${username}' not found.</status>
+</test>
+<doc>To validate the login functionality</doc>
+<status status="FAIL" start="2024-09-29T17:39:54.742008" elapsed="0.460393"/>
+</suite>
+<status status="FAIL" start="2024-09-29T17:39:54.742008" elapsed="0.464910"/>
+</suite>
+<status status="FAIL" start="2024-09-29T17:39:54.668426" elapsed="0.544243"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="pythonProject5">pythonProject5</stat>
+<stat pass="0" fail="1" skip="0" id="s1-s1" name="Tests">pythonProject5.Tests</stat>
+<stat pass="0" fail="1" skip="0" id="s1-s1-s1" name="TestDemo4">pythonProject5.Tests.TestDemo4</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2024-09-29T17:39:55.162219" level="ERROR">[ DataDriver ] Error in robot file:
+  File "C:\Users\kiran\PycharmProjects\pythonProject5\tests\TestDemo4.robot", line 0</msg>
+<msg time="2024-09-29T17:39:55.163559" level="ERROR">In source file:
+  File "Resources/Test_data.csv", line 0</msg>
+<msg time="2024-09-29T17:39:55.195247" level="ERROR">Calling method '_start_suite' of listener 'DataDriver' failed: LookupError: unknown encoding: UTF-8r</msg>
+</errors>
+</robot>
